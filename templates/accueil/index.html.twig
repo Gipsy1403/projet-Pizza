@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccueilController!{% endblock %}
+
+{% block body %}
+	<h1>from</h1>
+	{{form_start(carte)}}
+		<button>Envoyer</button>
+	{{form_end(carte)}}
+
+{% endblock %}

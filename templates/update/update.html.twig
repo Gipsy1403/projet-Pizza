@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UpdateController!{% endblock %}
+
+{% block body %}
+{% for pizza in pizzas %}
+	<h1>{{pizza.nom}}</h1>
+	<p>Ingrédient secret : {{pizza.ingredient}}</p>
+	<a href={{path("update_pizza",{"id":pizza.id})}}>Modifier</a>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PizzacreaController!{% endblock %}
+
+{% block body %}
+{% for pizza in pizzas %}
+	<h1>{{pizza.nom}}</h1>
+	<p>Ingrédient secret : {{pizza.ingredient}}</p>
+{% endfor %}
+{% endblock %}
