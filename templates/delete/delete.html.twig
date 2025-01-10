@@ -3,9 +3,5 @@
 {% block title %}Hello DeleteController!{% endblock %}
 
 {% block body %}
-<form method="POST" onsubmit="return confirm("confirmer la suppression ?")" action="{{path{"delete_pizza",{"id":article.id}}}">
-	<input type="hidden" name="_method" value="delete">
-	<input type="hidden" name="_token" value="{{csrf_token("SUP" ~ article.id)}}">
-	<input id="delete" type="submit" value="Supprimer">
-</form>
+
 {% endblock %}

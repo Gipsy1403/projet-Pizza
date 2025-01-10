@@ -3,9 +3,8 @@
 {% block title %}Hello UpdateController!{% endblock %}
 
 {% block body %}
-{% for pizza in pizzas %}
-	<h1>{{pizza.nom}}</h1>
-	<p>Ingrédient secret : {{pizza.ingredient}}</p>
-	<a href={{path("update_pizza",{"id":pizza.id})}}>Modifier</a>
-{% endfor %}
+	{{form_start(carte)}}
+		{{form_widget(carte)}}
+		<button>Modifier</button>
+	{{form_end(carte)}}
 {% endblock %}

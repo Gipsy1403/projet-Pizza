@@ -3,8 +3,9 @@
 {% block title %}Hello PizzacreaController!{% endblock %}
 
 {% block body %}
-{% for pizza in pizzas %}
-	<h1>{{pizza.nom}}</h1>
-	<p>Ingrédient secret : {{pizza.ingredient}}</p>
-{% endfor %}
+<h1>Créer une nouvelle pizza</h1>
+	{{form_start(carte)}}
+		{{form_widget(carte)}}
+		<button>Créer</button>
+	{{form_end(carte)}}
 {% endblock %}

@@ -3,9 +3,20 @@
 {% block title %}Hello AccueilController!{% endblock %}
 
 {% block body %}
-	<h1>from</h1>
-	{{form_start(carte)}}
-		<button>Envoyer</button>
-	{{form_end(carte)}}
+	{% for pizza in pizzas %}
+		<h1>{{pizza.nom}}</h1>
+		<p>Ingrédient secret : {{pizza.ingredient}}</p>
+		{# <p>Ingrédients : {{pizza.otheringredient.collection.elements}}</p> #}
+		<p>Pâte : {{pizza.pate.consistance}}</p>
+		<p>{{dump(pizza)}}</p>
+		<a href={{path("update_pizza",{"id":pizza.id})}}>Modifier</a>
+
+		<form method="POST" onsubmit="return confirm('Confirmer la suppression.')" action="{{path('delete_pizza',{'id':pizza.id}) }}">
+			<input type="hidden" name="_method" value="delete">
+			<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ pizza.id)}}">
+			<input id="delete" type="submit" value="Supprimer">
+		</form>
+		
+	{% endfor %}
 
 {% endblock %}

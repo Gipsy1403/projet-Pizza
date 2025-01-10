@@ -7,15 +7,25 @@
         {% block stylesheets %}
         {% endblock %}
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+      
     </head>
     <body>
-    <a href={{path("pizzacrea")}}>Index</a>
-    <a href={{path("accueil")}}>Création</a>
-        {% block body %}
-	 
+    <a href={{path("accueil")}}>Index</a>
+    <a href={{path("pizzacrea")}}>Création</a>
+       
+	   {% block body %}
+			{{form_row(pizza.pate.consistance, {
+				"label":"Choix de la pâte",
+				"label_attr":{"class":"form_label"},
+				"attr":{"placeholder":"entrez le titre", "classe": "form_input"}
+			})}}
+			
+			{% for message in app.flashes("success") %} {# messages de succes des opérations #}
+				<div class="alert alertesuccess">
+					{{message}}
+				</div>
+			{% endfor %}
+
 	   {% endblock %}
 	     
     </body>
