@@ -6,11 +6,15 @@
 	{% for pizza in pizzas %}
 		<h1>{{pizza.nom}}</h1>
 		<p>Ingrédient secret : {{pizza.ingredient}}</p>
-		{# <p>Ingrédients : {{pizza.otheringredient.collection.elements}}</p> #}
 		<p>Pâte : {{pizza.pate.consistance}}</p>
-		<p>{{dump(pizza)}}</p>
+
+		{% for enplus in ingredients %}
+			<p>Ingrédients : {{enplus.ingredient}}</p>
+		{% endfor %}	
+
 		<a href={{path("update_pizza",{"id":pizza.id})}}>Modifier</a>
 
+		
 		<form method="POST" onsubmit="return confirm('Confirmer la suppression.')" action="{{path('delete_pizza',{'id':pizza.id}) }}">
 			<input type="hidden" name="_method" value="delete">
 			<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ pizza.id)}}">

@@ -21,7 +21,7 @@ class CarteType extends AbstractType
 			"class"=>Pate::class,
 			'choice_label' => 'consistance',
 			])
-		->add('otheringredient', EntityType::class, [
+		->add('ingredients', EntityType::class, [
 			"class"=>Ingredient::class,
 			'choice_label' => 'nom',
 			'multiple'=>true,

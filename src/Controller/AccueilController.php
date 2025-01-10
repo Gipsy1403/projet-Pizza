@@ -16,10 +16,13 @@ class AccueilController extends AbstractController
 	public function read(PizzaRepository $repository): Response
 	{
 	 $pizzas=$repository->findAll();
+	 $ingredients=$repository->findAll();
 	    return $this->render('accueil/index.html.twig', [
 		   'pizzas' => $pizzas,
+		   'ingredients'=>$ingredients
 	    ]);
 	}
+
 
 
 }
