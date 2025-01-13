@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use App\Repository\PizzaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -36,7 +38,7 @@ class Pizza
         $this->ingredients = new ArrayCollection();
     }
 
-   
+   #[Vich\upload]
 
     public function getId(): ?int
     {

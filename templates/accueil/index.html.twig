@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccueilController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
 	{% for pizza in pizzas %}
@@ -8,8 +8,8 @@
 		<p>Ingrédient secret : {{pizza.ingredient}}</p>
 		<p>Pâte : {{pizza.pate.consistance}}</p>
 
-		{% for enplus in ingredients %}
-			<p>Ingrédients : {{enplus.ingredient}}</p>
+		{% for ingredient in pizza.ingredients %}
+			<p>Ingrédients : {{ingredient.nom}}</p>
 		{% endfor %}	
 
 		<a href={{path("update_pizza",{"id":pizza.id})}}>Modifier</a>
