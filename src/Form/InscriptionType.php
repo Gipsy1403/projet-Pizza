@@ -6,6 +6,7 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class InscriptionType extends AbstractType
 {
@@ -13,10 +14,7 @@ class InscriptionType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('roles')
-            ->add('password')
-		  ->add("username")
-		  ->add("confirm")
+            ->add('password', PasswordType::class)
         ;
     }
 

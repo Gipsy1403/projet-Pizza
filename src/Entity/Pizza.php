@@ -5,11 +5,13 @@ namespace App\Entity;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use App\Repository\PizzaRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PizzaRepository::class)]
+#[Vich\Uploadable]
 class Pizza
 {
     #[ORM\Id]
@@ -38,16 +40,45 @@ class Pizza
         $this->ingredients = new ArrayCollection();
     }
 
-   #[Vich\upload]
+	#[Vich\UploadableField(mapping:"images", fileNameProperty:"imageName")]
+	private ? File $imageFile = null;
+
+	#[ORM\Column(nullable:true)]
+	private ?string $imageName = null;
+
+	#[ORM\Column(nullable:true)]
+	private ?DateTimeImmutable $updatedAt = null;
+
+
+	public function SetImageFile(? File $imageFile =null):void
+	{
+		$this->imageFile=$imageFile;
+		if($imageFile){
+			$this->updatedAt = new \DateTimeImmutable();
+		}
+	}
+
+	public function getImageFile(): ? File
+	{
+		return $this->imageFile;
+	}
+	public function setImageName(?string $imageName):void
+	{
+		$this->imageName = $imageName;
+	}
+	public function getImageName(): ?string
+	{
+		return $this->imageName;
+	}
+
+	public function getNom(): ?string
+	{
+		return $this->nom;
+	}
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getNom(): ?string
-    {
-        return $this->nom;
     }
 
     public function setNom(string $nom): static

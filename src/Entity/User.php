@@ -31,14 +31,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $Username = null;
-
-     public function getId(): ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
+
+        return $this;
+    }
 
     /**
      * A visual identifier that represents this user.
@@ -96,17 +104,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
-
-    public function getUsername(): ?string
-    {
-        return $this->Username;
-    }
-
-    public function setUsername(string $Username): static
-    {
-        $this->Username = $Username;
-
-        return $this;
-    }
-
 }

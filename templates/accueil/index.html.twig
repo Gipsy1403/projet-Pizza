@@ -5,6 +5,8 @@
 {% block body %}
 	{% for pizza in pizzas %}
 		<h1>{{pizza.nom}}</h1>
+		<img src={{asset("images/" ~ pizza.imageName)}} alt="Pizza">
+		
 		<p>Ingrédient secret : {{pizza.ingredient}}</p>
 		<p>Pâte : {{pizza.pate.consistance}}</p>
 
